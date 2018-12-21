@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 	<script src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 <%-- 	<c:url value="/resources/text.txt" var="url"/>
@@ -13,7 +14,15 @@
 	Spring URL: ${springUrl} at ${time}
 	<br>--%>
 	<p><a href="/">Back to welcome page</a></p>
-	
+	<p><a href="addbook">Add new book</a></p>
+	<br>
+	<form method="post">
+		<input type="text" name="isbn" placeholder="Insert ISBN of book" />
+		<input type="text" name="title" placeholder="book title" />
+		<input type="text" name="publishDate" placeholder="date of publishing" />
+		<input type="text" name="countOfCopies" placeholder="count of copies" />
+		<button type="submit">Add</button>
+	</form>
 	<br>
 	<table>
 		<tr>

@@ -75,7 +75,7 @@ public class Book {
 	public void setCountOfCopies(int countOfCopies) {
 		this.countOfCopies = countOfCopies;
 	}
-	public Set<Author> getBookAuthors() {
+	public Set<Author> getBookAuthors() { 
 		return bookAuthors;
 	}
 
