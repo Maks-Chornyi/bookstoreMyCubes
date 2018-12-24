@@ -6,4 +6,6 @@ import mycubes.domain.Author;
 
 public interface AuthorService {
 	List<Author> getAllAuthors();
+	
+	void addAuthor(Author newAuthor);
 }

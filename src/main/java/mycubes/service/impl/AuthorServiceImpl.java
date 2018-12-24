@@ -20,4 +20,9 @@ public class AuthorServiceImpl implements AuthorService {
 	public List<Author> getAllAuthors() {
 		return (ArrayList<Author>) authorRepo.findAll();
 	}
+	
+	@Override
+	public void addAuthor(Author newAuthor) {
+		authorRepo.save(newAuthor);
+	}
 }

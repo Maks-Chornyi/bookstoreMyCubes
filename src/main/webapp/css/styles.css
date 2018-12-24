@@ -1,0 +1,29 @@
+
+body {
+  font-size: 2.5em;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: left;
+  vertical-align: ;
+  padding: 5px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+	
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}

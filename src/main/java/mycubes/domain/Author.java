@@ -19,7 +19,7 @@ public class Author {
 	private int id;
 	private String name;
 	private Date birthday;
-	private String adress;
+	private String address;
 	private String authorInfo;	
 	@ManyToMany
 	private Set<Book> authorsBooks;
@@ -27,19 +27,44 @@ public class Author {
 	public Author() {
 	}
 	
-	public Author(String name, Date birthday, String adress, String authorInfo) {
+	public Author(String name, Date birthday, String address, String authorInfo) {
+		super();
 		this.name = name;
 		this.birthday = birthday;
-		this.adress = adress;
+		this.address = address;
 		this.authorInfo = authorInfo;
 	}
-	
-	public String getName() {
-		return name;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAuthorInfo() {
+		return authorInfo;
+	}
+
+	public void setAuthorInfo(String authorInfo) {
+		this.authorInfo = authorInfo;
 	}
 
 	public Set<Book> getAuthorsBooks() {
@@ -50,34 +75,19 @@ public class Author {
 		this.authorsBooks = authorsBooks;
 	}
 
-	public int getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-	public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-	public String getAuthorInfo() {
-		return authorInfo;
-	}
-	public void setAuthorInfo(String authorInfo) {
-		this.authorInfo = authorInfo;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", name=" + name + ", birthday=" + birthday + ", adress=" + adress + ", authorInfo="
-				+ authorInfo + "]";
-	}	
+		return "Author [id=" + id + ", name=" + name + ", birthday=" + birthday + ", address=" + address
+				+ ", authorInfo=" + authorInfo + ", authorsBooks=" + authorsBooks + "]";
+	}
+	
+	
 }

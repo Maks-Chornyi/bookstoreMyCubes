@@ -6,11 +6,20 @@
 <html lang="en">
 <head>
 	<script src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 	<c:url value="/resources/text.txt" var="url"/>
 	<spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
 	<p><a href="/">Back to welcome page</a></p>
+	<br>
+	<form method="post">
+		<input type="text" name=name placeholder="Name" />
+		<input type="text" name="birthday" placeholder="Birthday" />
+		<input type="text" name="address" placeholder="Address" />
+		<input type="text" name="authorInfo" placeholder="Info" />
+		<button type="submit">Add author</button>
+	</form>
 	<table>
 		<thead>
 			<tr>
@@ -18,13 +27,14 @@
 				<th>Birthday</th>
 				<th>Address</th>
 				<th>Author info</th>
+				<th>Actions</th>
 			</tr> 
 		</thead>
 		<c:forEach items="${authors}" var="author">
 		<tr>
 			<td><c:out value="${author.name}" /></td>
 			<td><c:out value="${author.birthday}" /></td>
-			<td><c:out value="${author.adress}" /></td>
+			<td><c:out value="${author.address}" /></td>
 			<td><c:out value="${author.authorInfo}" /></td>
 			<td><button>Edit</button><button onclick="confirmDeleteAuthor()">Delete</button></td>
 			
