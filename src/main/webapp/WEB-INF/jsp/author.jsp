@@ -12,12 +12,14 @@
 	<spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
 	<p><a href="/">Back to welcome page</a></p>
 	<table>
-		<tr>
-			<th>Name</th>
-			<th>Birthday</th>
-			<th>Address</th>
-			<th>Author info</th>
-		</tr> 
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Birthday</th>
+				<th>Address</th>
+				<th>Author info</th>
+			</tr> 
+		</thead>
 		<c:forEach items="${authors}" var="author">
 		<tr>
 			<td><c:out value="${author.name}" /></td>
