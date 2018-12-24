@@ -25,4 +25,14 @@ public class AuthorServiceImpl implements AuthorService {
 	public void addAuthor(Author newAuthor) {
 		authorRepo.save(newAuthor);
 	}
+
+	@Override
+	public void deleteAuthorById(int id) {
+		authorRepo.deleteById(id);
+	}
+
+	@Override
+	public Author getAuthorById(int id) {
+		return authorRepo.findById(id).orElseThrow(RuntimeException::new);
+	}
 }

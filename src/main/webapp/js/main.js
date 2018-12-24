@@ -1,7 +1,21 @@
-function confirmDeleteBook() {
-	confirm("Do you really want to delete this book?");
+console.log('Hello message from js file');
+function confirmDeleteBook(id) {
+	var confirmation = confirm("Do you really want to delete this book?");
+	if(confirmation) {
+		document.getElementById("deleteBookId").value = id;
+		document.getElementById("deleteSelectedBookForm").submit();
+	}
 }
 
-function confirmDeleteBook() {
-	confirm("Do you really want to delete this Author?");
+function confirmDeleteAuthor(id) {
+	var confirmation = confirm("Do you really want to delete this Author?");
+	if(confirmation) {
+		document.getElementById("deleteAuthor").value = id;
+		document.getElementById("deleteAuthorForm").submit();
+	}
+}
+
+function editAuthorById(id) {
+	document.getElementById("editAuthor").value = id;
+	document.getElementById("editAuthorForm").submit();
 }

@@ -8,4 +8,8 @@ public interface AuthorService {
 	List<Author> getAllAuthors();
 	
 	void addAuthor(Author newAuthor);
+	
+	void deleteAuthorById(int id);
+	
+	Author getAuthorById(int id);
 }

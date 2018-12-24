@@ -35,12 +35,11 @@ public class Book {
 	public Book() {
 	}
 	
-	public Book(String bookId, String title, Date publishDate, int countOfCopies, Set<Author> bookAuthors) {
+	public Book(String bookId, String title, Date publishDate, int countOfCopies) {
 		this.bookId = bookId;
 		this.title = title;
 		this.publishDate = publishDate;
 		this.countOfCopies = countOfCopies;
-		this.bookAuthors = bookAuthors;
 	}
 
 	public String getTitle() {

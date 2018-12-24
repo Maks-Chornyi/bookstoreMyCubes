@@ -23,6 +23,10 @@
 		<button type="submit">Add book</button>
 	</form>
 	<br>
+	<form action="/deletebook" method="post" id="deleteSelectedBookForm">
+		<input  id="deleteBookId" type="hidden"  name="id" value="" />
+	</form>
+	
 	<table>
 		<tr>
 			<th>ISBN</th>
@@ -37,7 +41,7 @@
 			<td><c:out value="${book.title}" /></td>
 			<td><c:out value="${book.publishDate}" /></td>
 			<td><c:out value="${book.countOfCopies}" /></td>
-			<td><button>Edit</button><button onclick="confirmDeleteBook()">Delete</button></td>
+			<td><button>Edit</button><button onclick="confirmDeleteBook(${book.id})">Delete</button></td>
 			
 		</tr>
 		</c:forEach>

@@ -20,6 +20,12 @@
 		<input type="text" name="authorInfo" placeholder="Info" />
 		<button type="submit">Add author</button>
 	</form>
+	<form id="deleteAuthorForm" action="/deleteauthor" method="post">
+		<input id="deleteAuthor" type="hidden" name="id" value="">
+	</form>
+	<form id="editAuthorForm" action="/author/${author.id}" method="get">
+		<input id="editAuthor" type="hidden" name="id" value="">
+	</form>
 	<table>
 		<thead>
 			<tr>
@@ -36,11 +42,16 @@
 			<td><c:out value="${author.birthday}" /></td>
 			<td><c:out value="${author.address}" /></td>
 			<td><c:out value="${author.authorInfo}" /></td>
-			<td><button>Edit</button><button onclick="confirmDeleteAuthor()">Delete</button></td>
+			<td><button onclick="editAuthorById(${author.id})">Edit</button><button onclick="confirmDeleteAuthor(${author.id})">Delete</button></td>
 			
 		</tr>
 		</c:forEach>
 	</table>
+	
+	
+	
+	
+
 </body>
 
 </html>
