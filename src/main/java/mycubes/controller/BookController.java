@@ -1,9 +1,6 @@
 package mycubes.controller;
 
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import mycubes.domain.Author;
 import mycubes.domain.Book;
-import mycubes.service.AuthorService;
 import mycubes.service.BookService;
 
 @Controller
@@ -36,18 +33,23 @@ public class BookController {
 		return "redirect:/book";
 	}
 	
-	@PostMapping("/book")
-	public String addBook(
-			@RequestParam String isbn, 
-			@RequestParam String title, 
-			@RequestParam String publishDate, 
-			@RequestParam int countOfCopies, 
-			Model model) throws ParseException {
-		Date authorBirthday = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(publishDate);
-		Book newBook = new Book(isbn,title,authorBirthday, countOfCopies);
+	@RequestMapping(value="/book/{id}/edit", method = RequestMethod.GET)
+	public String editBookById(@PathVariable int id, Model model) {
+		model.addAttribute("book", bookService.getBookById(id));
+		return "editbook";
+	}
+	
+	@PostMapping("/addbook")
+	public String addBook(@Valid Book newBook, Model model) {
 		bookService.addBook(newBook);
 		model.addAttribute("book", bookService.getAllBooks());
-		return "book";
+		return "redirect:/book";
+	}
+	
+	@RequestMapping(value="/book/{id}/edit", method = RequestMethod.POST)
+	public String saveUpdatedBookById(@Valid Book book) {
+		bookService.addBook(book);
+		return "redirect:/book";
 	}
 		
 }

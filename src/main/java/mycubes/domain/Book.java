@@ -41,6 +41,11 @@ public class Book {
 		this.publishDate = publishDate;
 		this.countOfCopies = countOfCopies;
 	}
+	
+	public Book(String bookId, String title, Date publishDate, int countOfCopies, Set<Author> bookAuthors) {
+		this(bookId, title, publishDate, countOfCopies);
+		this.bookAuthors = bookAuthors;
+	}
 
 	public String getTitle() {
 		return title;

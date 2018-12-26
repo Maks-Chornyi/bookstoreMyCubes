@@ -16,6 +16,9 @@ function confirmDeleteAuthor(id) {
 }
 
 function editAuthorById(id) {
-	document.getElementById("editAuthor").value = id;
-	document.getElementById("editAuthorForm").submit();
+	document.location="/author/" + id + "/edit";
+}
+
+function editBookById(id) {
+	document.location="/book/" + id + "/edit";
 }
