@@ -1,5 +1,9 @@
 package mycubes.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +17,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mycubes.domain.Author;
+import mycubes.domain.Book;
 import mycubes.service.AuthorService;
+import mycubes.service.BookService;
 
 @Controller
 public class AuthorController {
 	
 	@Autowired
 	private AuthorService authorService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	@GetMapping("/author")
 	public String getAllAuthors(Model model) {
@@ -35,7 +44,14 @@ public class AuthorController {
 	
 	@RequestMapping(value = "/author/{id}/edit", method = RequestMethod.GET)
 	public String editAuthorById(@PathVariable(value="id") int id, Model model) {
-		model.addAttribute("author", authorService.getAuthorById(id));
+		Author author = authorService.getAuthorById(id);
+		List<Integer> authorsBooksIds = new ArrayList<>();
+		for (Book book : author.getAuthorsBooks()) {
+			authorsBooksIds.add(book.getId());
+		}
+		model.addAttribute("author", author);
+		model.addAttribute("books", bookService.getAllBooks());
+		model.addAttribute("authorsBooksIds", authorsBooksIds);
 		return "editauthor";
 	}
 	

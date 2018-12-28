@@ -3,10 +3,14 @@ package mycubes.domain;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,8 +24,16 @@ public class Author {
 	private String name;
 	private Date birthday;
 	private String address;
-	private String authorInfo;	
-	@ManyToMany
+	private String authorInfo;
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	@JoinTable(name = "author_and_authors_books", 
+			joinColumns = { @JoinColumn(name = "author_id") },
+			inverseJoinColumns = { @JoinColumn(name = "book_id") })
 	private Set<Book> authorsBooks;
 	
 	public Author() {
@@ -33,6 +45,11 @@ public class Author {
 		this.birthday = birthday;
 		this.address = address;
 		this.authorInfo = authorInfo;
+	}
+	
+	public Author(String name, Date birthday, String address, String authorInfo, Set<Book> authorsBooks) {
+		this(name, birthday, address, authorInfo);
+		this.authorsBooks = authorsBooks;
 	}
 
 	public int getId() {

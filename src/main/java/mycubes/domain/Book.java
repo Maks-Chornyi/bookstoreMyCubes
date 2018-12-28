@@ -30,7 +30,7 @@ public class Book {
                 CascadeType.PERSIST,
                 CascadeType.MERGE
             }, mappedBy="authorsBooks")
-	private Set<Author> bookAuthors;
+	private Set<Author> booksAuthors;
 
 	public Book() {
 	}
@@ -44,7 +44,7 @@ public class Book {
 	
 	public Book(String bookId, String title, Date publishDate, int countOfCopies, Set<Author> bookAuthors) {
 		this(bookId, title, publishDate, countOfCopies);
-		this.bookAuthors = bookAuthors;
+		this.booksAuthors = bookAuthors;
 	}
 
 	public String getTitle() {
@@ -80,16 +80,16 @@ public class Book {
 		this.countOfCopies = countOfCopies;
 	}
 	public Set<Author> getBookAuthors() { 
-		return bookAuthors;
+		return booksAuthors;
 	}
 
 	public void setBookAuthors(Set<Author> bookAuthors) {
-		this.bookAuthors = bookAuthors;
+		this.booksAuthors = bookAuthors;
 	}
 
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", bookId=" + bookId + ", title=" + title + ", publishDate=" + publishDate
-				+ ", countOfCopies=" + countOfCopies + ", bookAuthors=" + bookAuthors + "]";
+				+ ", countOfCopies=" + countOfCopies + ", bookAuthors=" + booksAuthors + "]";
 	}
 }

@@ -24,6 +24,43 @@ public class Application /*extends SpringBootServletInitializer*/ {
 //	@Bean
 //	public CommandLineRunner demo(BookRepository bookRepo, AuthorRepository authorRepo) {
 //		return (args) -> {
+//			//Ain Rand's Books 
+//			Book book1 = new Book("000-000-005","Dzherelo", new Date(), 5000);
+//			Book book2 = new Book("000-000-006","Atlas", new Date(), 5000);
+//			Set<Book> books1 = new HashSet<>();
+//			books1.add(book1);
+//			books1.add(book2);
+//			Author author1 = new Author("Ain Rand", new Date(), "Washington st., NY", "egoistic philosophy", books1);
+//			authorRepo.save(author1);
+//		};
+//	}
+//	
+//	@Bean
+//	public CommandLineRunner demo1(BookRepository bookRepo, AuthorRepository authorRepo) {
+//		return (args) -> {
+//			//Jack London's books
+//			Book book3 = new Book("000-000-007","Bile Iklo", new Date(), 1000);
+//			Book book4 = new Book("000-000-008","Martin Eden", new Date(), 500);
+//			Set<Book> books2 = new HashSet<>();
+//			books2.add(book3);
+//			books2.add(book4);
+//			Author author2 =new Author("Jack London", new Date(), "Patric st., London", "author from GB", books2);
+//			authorRepo.save(author2);
+//		};
+//	}
+//	
+//	@Bean
+//	public CommandLineRunner demo2(AuthorRepository authorRepo) {
+//		return (args) -> {
+//			Author author3 = new Author("Maks Chornyi", new Date(), "keramichna st, Lviv", "java dev");
+//			authorRepo.save(author3);
+//		};
+//	}
+	
+	
+//	@Bean
+//	public CommandLineRunner demo(BookRepository bookRepo, AuthorRepository authorRepo) {
+//		return (args) -> {
 //			//create books
 ////			new Book("str1","str2",new Date(44),5000,new HashSet<Author>());
 ////			Book book1 = new Book("99921-58-10-7", "title1", new Date(10000), 5000, getParticularNumberOfAuthors(1));
