@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mycubes.domain.Book;
@@ -23,7 +24,11 @@ public class BookRestController {
 	@GetMapping("/getBookInfo")
 	public Book getBookInfo() {
 		Book bookFromRepo = bookService.getBookById(4);
-		System.out.println("before return");	
 		return bookFromRepo;
+	}
+	
+	@GetMapping("/getBookInfoById")
+	public Book getBookInfoById(@RequestParam int id) {
+		return bookService.getBookById(id);
 	}
 }

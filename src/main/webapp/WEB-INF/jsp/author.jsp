@@ -31,7 +31,7 @@
 	</div>
 		<thead>
 			<tr>
-				<th>num</th>
+				<th>&#8470;</th>
 				<th>Name</th>
 				<th>Birthday</th>
 				<th>Address</th>

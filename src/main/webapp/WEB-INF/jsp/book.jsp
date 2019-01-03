@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="/js/jQuery.js"></script>
+
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
@@ -29,7 +30,7 @@
 	
 	<table>
 		<tr>
-			<th>Num</th>
+			<th>&#8470;</th>
 			<th>ISBN</th>
 			<th>Name</th>
 			<th>Publish Date</th>
@@ -37,19 +38,23 @@
 			<th>Actions</th>
 		</tr> 
 		<c:forEach items="${books}" var="book" varStatus="status">
-		<tr>
-			<td>${status.count}</td>
-			<td><c:out value="${book.bookId}" /></td>
-			<td><c:out value="${book.title}" /></td>
-			<fmt:formatDate pattern='dd/MM/yyyy' type='date' value='${book.publishDate}' var="formattedDate"/>
-			<td><c:out value='${formattedDate}'/></td>
-			<td><c:out value="${book.countOfCopies}" /></td>
-			<td><button id="getbookinfo" onclick="getbookinfo(${book.id})">Info</button><button onclick="editBookById(${book.id})">Edit</button><button onclick="confirmDeleteBook(${book.id})">Delete</button></td>
-			
-		</tr>
+			<tr>
+				<td>${status.count}</td>
+				<td><c:out value="${book.bookId}" /></td>
+				<td><c:out value="${book.title}" /></td>
+				<fmt:formatDate pattern='dd/MM/yyyy' type='date' value='${book.publishDate}' var="formattedDate"/>
+				<td><c:out value='${formattedDate}'/></td>
+				<td><c:out value="${book.countOfCopies}" /></td>
+				<td>
+					<button onclick="getBookInfoById(${book.id})">Info</button>
+					<button onclick="editBookById(${book.id})">Edit</button>
+					<button onclick="confirmDeleteBook(${book.id})">Delete</button>
+				</td>
+				
+			</tr>
 		</c:forEach>
 	</table>
-	<button id="id_get_timez">Get Server Time</button>
+	<button id="id_get_time">Get Server Time</button>
 	<button id=hideTimeFromServer>Hide Time</button>
 	<br>
 	<p id="id_time"></p>
@@ -70,17 +75,15 @@
 	  <div class="modal-content">
 	    <div class="modal-header">
 	      <span class="close">&times;</span>
-	      <h2>Modal Header</h2>
+	      <h2>Book Info</h2>
 	    </div>
 	    <div class="modal-body">
 	      <p id="title">1</p>
 	      <p id="bookId">2</p>
-	      <p id="publishDate">3</p>
 	      <p id="countOfCopies">4</p>
-	      <p id="booksAuthors">5</p>
 	    </div>
 	    <div class="modal-footer">
-	      <h3>Modal Footer</h3>
+	      <h4>Modal Footer</h4>
 	    </div>
 	  </div>
 	
@@ -92,7 +95,7 @@
 	
 	
 	
-	<script>
+	<!-- <script>
 		// Get the modal
 		var modal = document.getElementById('myModal');
 		
@@ -118,9 +121,11 @@
 		    modal.style.display = "none";
 		  }
 		}
-	</script>
+	</script> -->
 	
-	
+		<script>
+  		var bookId = "${book.id}";
+</script>
 </body>
 
 </html>
