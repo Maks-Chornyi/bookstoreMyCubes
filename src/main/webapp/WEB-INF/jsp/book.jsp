@@ -58,7 +58,7 @@
 	<button id=hideTimeFromServer>Hide Time</button>
 	<br>
 	<p id="id_time"></p>
-	<button id="get_book_info">Get Book Info</button>
+	<button onclick="testShortGet(5)">Get Book Info</button>
 	<br>
 	<br>
 	<br>
@@ -122,10 +122,6 @@
 		  }
 		}
 	</script> -->
-	
-		<script>
-  		var bookId = "${book.id}";
-</script>
 </body>
 
 </html>

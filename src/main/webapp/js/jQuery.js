@@ -11,29 +11,27 @@ function getBookInfoById(id) {
 			alert("Error: " + e);
 		}
 	});
-	showModalWindow();
-}
-
-function showModalWindow() {
 	$('#myModal').css('display','block');
 }
 
+function testShortGet(id) {
+	$.get("getServerTime", function(data, status){
+		alert("Data: " + data + "\nStatus: " + status);
+	});
+}
 
 $(document).ready(function() {
-		
+	
 		$("#id_get_time").click(function() {
-			$.ajax({
-				url : 'getServerTime',
-				success : function(data) {
+			$.get("getServerTime", function(data, status) {
+				if(status == "success") {
 					$("#id_time").html(data);
+					$("#hideTimeFromServer").css("display","block");
+				} else {
+					alert("Error");
 				}
 			});
-			showButtonWhichHideTime();
 		});
-		
-		function showButtonWhichHideTime() {
-			$("#hideTimeFromServer").css("display","block");
-		}
 		
 		$("#hideTimeFromServer").click(function() {
 			$("#id_time").html("");
@@ -41,24 +39,7 @@ $(document).ready(function() {
 		});
 		
 		$('.close').click(function() {
-			$('#myBtn').css('display','none');
+			$('#myModal').css('display','none');
 		});		
-		
-		$("#myBtn").click(function() {
-			$.ajax({
-				url : 'getBookInfo',
-				type : 'GET',
-/*				contentType: 'application/json',
-				dataType: 'json',*/
-				success : function(result) {
-					$("#title").html("Book title: " + result.title);
-					$("#bookId").html("Book ISBN: " + result.bookId);
-					$("#countOfCopies").html("Count of copies: " + result.countOfCopies);
-				},
-				error : function(e) {
-					alert("Error: " + e);
-				}
-			});
-		});
 	}
 );
