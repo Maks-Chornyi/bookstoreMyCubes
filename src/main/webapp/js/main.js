@@ -1,4 +1,4 @@
-console.log('Hello message from js file');
+
 function confirmDeleteBook(id) {
 	var confirmation = confirm("Do you really want to delete this book?");
 	if(confirmation) {

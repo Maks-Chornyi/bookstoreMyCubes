@@ -7,10 +7,10 @@
 
 <html lang="en">
 <head>
-	<script src="../../js/main.js"></script>
+	<script src="/js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="../../js/jQuery.js"></script>
+	<script src="/js/jQuery.js"></script>
 	
 </head>
 <body>

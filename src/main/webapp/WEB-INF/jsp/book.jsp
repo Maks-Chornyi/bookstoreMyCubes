@@ -7,9 +7,10 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script src="js/main.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="/js/jQuery.js"></script>
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
@@ -43,11 +44,17 @@
 			<fmt:formatDate pattern='dd/MM/yyyy' type='date' value='${book.publishDate}' var="formattedDate"/>
 			<td><c:out value='${formattedDate}'/></td>
 			<td><c:out value="${book.countOfCopies}" /></td>
-			<td><button onclick="editBookById(${book.id})">Edit</button><button onclick="confirmDeleteBook(${book.id})">Delete</button></td>
+			<td><button id="getbookinfo" onclick="getbookinfo(${book.id})">Info</button><button onclick="editBookById(${book.id})">Edit</button><button onclick="confirmDeleteBook(${book.id})">Delete</button></td>
 			
 		</tr>
 		</c:forEach>
 	</table>
+	<button id="id_get_timez">Get Server Time</button>
+	<button id=hideTimeFromServer>Hide Time</button>
+	<br>
+	<p id="id_time"></p>
+	<button id="get_book_info">Get Book Info</button>
+	
 </body>
 
 </html>

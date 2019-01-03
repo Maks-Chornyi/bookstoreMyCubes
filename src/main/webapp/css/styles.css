@@ -35,3 +35,7 @@ tr:nth-child(even) {
 	margin-top: 35px;
 	margin-bottom: 35px;
 }
+
+#hideTimeFromServer {
+	display: none; 
+}

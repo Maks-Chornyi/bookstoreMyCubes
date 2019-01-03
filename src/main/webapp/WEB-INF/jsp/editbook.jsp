@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
@@ -19,9 +19,25 @@
 		<div>Title: <input type="text" name="title" value="${book.title}"></div>
 		<div>Publish Date: <input type="text" name="publishDate" value='<fmt:formatDate pattern="dd/MM/yyyy" value="${book.publishDate}"/>'></div>
 		<div>Count of Copies: <input type="text" name="countOfCopies" value="${book.countOfCopies}"></div>
+		<div>
+			<c:choose>
+				<c:when test="${booksAuthors.size() == 0}">
+					<p>There is no author of this book</p>
+				</c:when>
+				<c:otherwise>
+					<h3>Author(s) of this book</h3>
+					<c:forEach items="${booksAuthors}" var="author">
+						<p>${author.name}</p>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<input type="submit" value="Save Changes">
 	</form>
-		<button><a href="/book">Cancel</a></button>
+	
+	
+	<button><a href="/book">Cancel</a></button>
+		
 </body>
 
 </html>

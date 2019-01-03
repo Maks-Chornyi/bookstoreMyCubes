@@ -6,8 +6,8 @@
 
 <html lang="en">
 <head>
-	<script src="js/main.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
