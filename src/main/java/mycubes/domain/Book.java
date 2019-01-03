@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name= "book")
 public class Book {
@@ -25,6 +27,7 @@ public class Book {
 	private Date publishDate;
 	private int countOfCopies;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                 CascadeType.PERSIST,

@@ -22,6 +22,8 @@ public class BookRestController {
 	
 	@GetMapping("/getBookInfo")
 	public Book getBookInfo() {
-		return bookService.getBookById(1);
+		Book bookFromRepo = bookService.getBookById(4);
+		System.out.println("before return");	
+		return bookFromRepo;
 	}
 }

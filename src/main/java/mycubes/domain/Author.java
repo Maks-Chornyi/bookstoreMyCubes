@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "author")
 public class Author {
@@ -26,6 +28,7 @@ public class Author {
 	private String address;
 	private String authorInfo;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = {
 					CascadeType.PERSIST,

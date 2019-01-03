@@ -24,12 +24,13 @@ $(document).ready(function() {
 			$.ajax({
 				url : 'getBookInfo',
 				type : 'GET',
-				dataType: 'json',
+/*				contentType: 'application/json',
+				dataType: 'json',*/
 				success : function(result) {
-					alert("Hello maN");
+					console.log(result.bookAuthors);
 				},
 				error : function(e) {
-					console.log(e);
+					console.log("error");
 				}
 			});
 		});
