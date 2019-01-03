@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import mycubes.domain.Book;
@@ -27,8 +27,8 @@ public class BookRestController {
 		return bookFromRepo;
 	}
 	
-	@GetMapping("/getBookInfoById")
-	public Book getBookInfoById(@RequestParam int id) {
+	@GetMapping("/getBookInfoById/{id}")
+	public Book getBookInfoById(@PathVariable int id) {
 		return bookService.getBookById(id);
 	}
 }

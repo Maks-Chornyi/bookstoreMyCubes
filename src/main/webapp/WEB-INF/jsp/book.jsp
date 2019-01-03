@@ -63,6 +63,7 @@
 	<br>
 	<br>
 	<br>
+	<button onclick="testPost(4)">Test Post</button>
 
 
 	<!-- Trigger/Open The Modal -->

@@ -20,7 +20,20 @@ function testShortGet(id) {
 	});
 }
 
+function testPost(id) {
+	
+		$.get("getBookInfoById/" + id, function(data, status) {
+			if(status == "success") {
+				alert(data);
+			} else {
+				alert("bad ");
+			}
+		});
+}
+
 $(document).ready(function() {
+	
+	
 	
 		$("#id_get_time").click(function() {
 			$.get("getServerTime", function(data, status) {
