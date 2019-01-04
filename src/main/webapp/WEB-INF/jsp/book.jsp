@@ -15,13 +15,21 @@
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
-	<br>
-	<form method="post" action="/addbook">
+ 	<br>
+<!--  	<form id="newBookForm" method="post" action="/addbook">
 		<input type="text" name="bookId" placeholder="Insert ISBN of book" />
 		<input type="text" name="title" placeholder="book title" />
 		<input type="text" name="publishDate" placeholder="date of publishing" />
 		<input type="text" name="countOfCopies" placeholder="count of copies" />
 		<button type="submit">Add book</button>
+	</form> -->
+	<br>  
+	<form id="formTestPostAjax">
+		<input type="text" name="bookId" placeholder="Insert ISBN of book" />
+		<input type="text" name="title" placeholder="book title" />
+		<input type="text" name="publishDate" placeholder="date of publishing" />
+		<input type="text" name="countOfCopies" placeholder="count of copies" />
+		<button type="submit" onclick="blabla()">Add book</button>
 	</form>
 	<br>
 	<form action="/deletebook" method="post" id="deleteSelectedBookForm">
@@ -80,40 +88,6 @@
 	    </div>
 	  </div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	<!-- <script>
-		// Get the modal
-		var modal = document.getElementById('myModal');
-		
-		// Get the button that opens the modal
-		var btn = document.getElementById("myBtn");
-		
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-		
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-		
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-		
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-		  if (event.target == modal) {
-		    modal.style.display = "none";
-		  }
-		}
-	</script> -->
 </body>
 
 </html>
