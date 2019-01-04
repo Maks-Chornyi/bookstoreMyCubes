@@ -58,16 +58,7 @@
 	<button id=hideTimeFromServer>Hide Time</button>
 	<br>
 	<p id="id_time"></p>
-	<button onclick="testShortGet(5)">Get Book Info</button>
-	<br>
-	<br>
-	<br>
-	<br>
-	<button onclick="testPost(4)">Test Post</button>
 
-
-	<!-- Trigger/Open The Modal -->
-	<button id="myBtn">Open Modal</button>
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -82,12 +73,12 @@
 	      <p id="title">1</p>
 	      <p id="bookId">2</p>
 	      <p id="countOfCopies">4</p>
+	      <p id="bookAuthors">5</p>
 	    </div>
 	    <div class="modal-footer">
 	      <h4>Modal Footer</h4>
 	    </div>
 	  </div>
-	
 	</div>
 	
 	
