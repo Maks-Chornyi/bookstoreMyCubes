@@ -12,4 +12,6 @@ public interface BookService {
 	Book getBookById(int id);
 	
 	void addBook(Book book);
+	
+	 List<Book> findBooksByName(String searchStr);
 }

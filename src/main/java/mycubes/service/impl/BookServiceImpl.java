@@ -12,7 +12,7 @@ import mycubes.service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {
-	
+
 	@Autowired
 	private BookRepository bookRepo;
 	
@@ -35,5 +35,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void addBook(Book book) {
 		bookRepo.save(book);
-	}	
+	}
+
+	@Override
+	public List<Book> findBooksByName(String searchStr) {
+		return bookRepo.findBooksByName(searchStr);
+	}
 }

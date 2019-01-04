@@ -32,6 +32,16 @@ function testPost(id) {
 
 $(document).ready(function() {
 	
+		var timeoutID = null;
+		function findMember(str) {
+			console.log('search: ' + str);
+		}
+		
+		$('#searchInput').keyup(function(e) {
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout(() => findMember(e.target.value), 500);
+		});
+	
 		$( "#dialog1" ).dialog({
 		    autoOpen: false
 		});

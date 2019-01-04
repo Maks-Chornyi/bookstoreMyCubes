@@ -37,6 +37,11 @@
 	<form action="/deletebook" method="post" id="deleteSelectedBookForm">
 		<input  id="deleteBookId" type="hidden"  name="id" value="" />
 	</form>
+	<br>
+	<form id="searchForm">
+		<input id = "searchInput" type="text" name = "search" placeholder = "Type search word..."/>
+	</form>
+	<br>
 	
 	<table>
 		<tr>

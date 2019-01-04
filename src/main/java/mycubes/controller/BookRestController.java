@@ -1,11 +1,15 @@
 package mycubes.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mycubes.domain.Book;
@@ -15,7 +19,7 @@ import mycubes.service.BookService;
 public class BookRestController {
 	
 	@Autowired
-	BookService bookService;
+	private BookService bookService;
 	
 	@GetMapping("/getServerTime")
 	public Date getServerTime() {
@@ -36,5 +40,11 @@ public class BookRestController {
 	@PostMapping("/addBookAjax")
 	public void addBookAjaz(Book book) {
 		bookService.addBook(book);
+	}
+	
+	@RequestMapping(value = "/bookSearch", method = RequestMethod.POST) 
+	public List<Book> findBooksByName(@RequestParam String searchStr) {
+		System.out.println(searchStr);
+		return bookService.findBooksByName("las");
 	}
 }
