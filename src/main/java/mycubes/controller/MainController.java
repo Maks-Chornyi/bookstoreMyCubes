@@ -10,4 +10,9 @@ public class MainController {
 	public String getWelcomePage() {
 		return "index";
 	}
+	
+	@GetMapping("includeTest")
+	public String getTest() {
+		return "includeTest";
+	}
 }

@@ -9,8 +9,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<script src="/js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 	<script src="/js/jQuery.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
 </head>
 <body>
@@ -62,6 +64,14 @@
 			</tr>
 		</c:forEach>
 	</table>
+																<!-- Dialog window -->
+	<button id="opener">open the dialog</button>
+	<div id="dialog1" title="Dialog Title" hidden="hidden">
+		<p id="titleDialog">hello</p>
+		<p id="bookIdDialog">second</p>
+		<p id="countOfCopiesDialog">third</p>
+	</div>
+																<!-- / Dialog window -->
 	<button id="id_get_time">Get Server Time</button>
 	<button id=hideTimeFromServer>Hide Time</button>
 	<br>

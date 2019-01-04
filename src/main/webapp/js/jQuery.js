@@ -1,3 +1,4 @@
+
 function blabla() {
 	$.post('addBookAjax', $('#formTestPostAjax').serialize());
 	window.location.reload;
@@ -11,20 +12,11 @@ function testShortGet(id) {
 
 function getBookInfoById(id) {
 	$.get('getBookInfoById/' + id, function(data, status) {
-		if(status == 'success') {
-			$('#title').html('Book title: ' + data.title);
-			$('#bookId').html('Book ISBN: ' + data.bookId);
-			$('#countOfCopies').html('Count of copies: ' + data.countOfCopies);
-			if(data.bookAuthors[0]) {
-				$('#bookAuthors').html('Authors: ' + data.bookAuthors[0].name);
-			} else {
-				$('#bookAuthors').html('Unknown author');
-			}
-			$('#myModal').css('display','block');
-		} else {
-			alert('bad status');
-		}
+		$('#titleDialog').html('Book title: ' + data.title);
+		$('#bookIdDialog').html('Book ISBN: ' + data.bookId);
+		$('#countOfCopiesDialog').html('Count of copies: ' + data.countOfCopies);
 	});
+	   $("#dialog1").dialog('open');
 }
 
 function testPost(id) {
@@ -39,6 +31,12 @@ function testPost(id) {
 }
 
 $(document).ready(function() {
+	
+		$( "#dialog1" ).dialog({
+		    autoOpen: false
+		});
+		  
+		
 	
 		$('#id_get_time').click(function() {
 			$.get('getServerTime', function(data, status) {

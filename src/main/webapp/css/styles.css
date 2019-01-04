@@ -121,3 +121,12 @@ tr:nth-child(even) {
   from {opacity: 0} 
   to {opacity: 1}
 }
+
+
+
+
+.ui-widget-header,.ui-state-default, ui-button {
+            background:#b9cd6d;
+            border: 1px solid #b9cd6d;
+            color: #FFFFFF;
+            font-weight: bold;
