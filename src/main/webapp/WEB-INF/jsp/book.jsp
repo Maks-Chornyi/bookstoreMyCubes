@@ -52,6 +52,10 @@
 			<th>Count of copies</th>
 			<th>Actions</th>
 		</tr> 
+		
+		<%-- <c:forEach begin="0" end="5" varStatus="loop" items="${books}" var="book">
+    		Index: ${book.title}<br/>
+		</c:forEach> --%>
 		<c:forEach items="${books}" var="book" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
@@ -67,42 +71,13 @@
 				</td>
 				
 			</tr>
-		</c:forEach>
+		</c:forEach> 
 	</table>
-																<!-- Dialog window -->
-	<button id="opener">open the dialog</button>
-	<div id="dialog1" title="Dialog Title" hidden="hidden">
-		<p id="titleDialog">hello</p>
-		<p id="bookIdDialog">second</p>
-		<p id="countOfCopiesDialog">third</p>
-	</div>
 																<!-- / Dialog window -->
 	<button id="id_get_time">Get Server Time</button>
 	<button id=hideTimeFromServer>Hide Time</button>
 	<br>
 	<p id="id_time"></p>
-
-	
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-	
-	  <!-- Modal content -->
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <span class="close">&times;</span>
-	      <h2>Book Info</h2>
-	    </div>
-	    <div class="modal-body">
-	      <p id="title">1</p>
-	      <p id="bookId">2</p>
-	      <p id="countOfCopies">4</p>
-	      <p id="bookAuthors">5</p>
-	    </div>
-	    <div class="modal-footer">
-	      <h4>Modal Footer</h4>
-	    </div>
-	  </div>
-	</div>
 </body>
 
 </html>
