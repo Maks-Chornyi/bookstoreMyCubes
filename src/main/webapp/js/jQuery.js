@@ -35,6 +35,9 @@ $(document).ready(function() {
 		var timeoutID = null;
 		function findMember(str) {
 			console.log('search: ' + str);
+			$.post('bookSearch', $('#searchForm').serialize(), function(data, status) {
+				alert('Data: ' + data, + '; Status: ' + status);
+			});
 		}
 		
 		$('#searchInput').keyup(function(e) {

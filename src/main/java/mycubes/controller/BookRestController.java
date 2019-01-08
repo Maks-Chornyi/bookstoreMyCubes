@@ -42,9 +42,9 @@ public class BookRestController {
 		bookService.addBook(book);
 	}
 	
-	@RequestMapping(value = "/bookSearch", method = RequestMethod.POST) 
-	public List<Book> findBooksByName(@RequestParam String searchStr) {
-		System.out.println(searchStr);
-		return bookService.findBooksByName("las");
+	@PostMapping("/bookSearch")
+	public List<Book> findBooksByName(String search) {
+		System.out.println(search);
+		return bookService.findBooksByName(search);
 	}
 }
