@@ -38,9 +38,15 @@
 		<input  id="deleteBookId" type="hidden"  name="id" value="" />
 	</form>
 	<br>
-	<form id="searchForm">
-		<input id = "searchInput" type="text" name = "search" placeholder = "Type search word..."/>
+	
+	
+	
+ 	<form id="searchForm">
+		<input id="searchInput" type="text" name = "search" placeholder = "Type search word..."/>
 	</form>
+	<ul class="search-result">
+		
+	</ul> 
 	<br>
 	
 	<table>
@@ -69,10 +75,15 @@
 					<button onclick="editBookById(${book.id})">Edit</button>
 					<button onclick="confirmDeleteBook(${book.id})">Delete</button>
 				</td>
-				
 			</tr>
 		</c:forEach> 
 	</table>
+	
+	<div id="dialog1" title="Dialog Title" hidden="hidden">	
+		<p id="titleDialog">hello</p>	
+		<p id="bookIdDialog">second</p>	
+		<p id="countOfCopiesDialog">third</p>	
+	</div>
 																<!-- / Dialog window -->
 	<button id="id_get_time">Get Server Time</button>
 	<button id=hideTimeFromServer>Hide Time</button>

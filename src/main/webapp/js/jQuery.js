@@ -34,9 +34,29 @@ $(document).ready(function() {
 	
 		var timeoutID = null;
 		function findMember(str) {
+			$('ul.search-result li').remove();
+			if(!str && str.length == 0) return;
 			console.log('search: ' + str);
 			$.post('bookSearch', $('#searchForm').serialize(), function(data, status) {
-				alert('Data: ' + data, + '; Status: ' + status);
+				if(status == "success") {
+					if(data.length > 0) {
+						var maxCountOfSuggestions = 5;
+						for(var i = 0; i < data.length && i < maxCountOfSuggestions; i++) {
+							var elem = data[i];
+							var a = $("<a />", {
+								href : "/book/" + elem.id + "/edit"
+							});
+							var book = $("<li></li>").text(elem.title);
+							a.append(book);
+							$('ul.search-result').append(a);
+						}
+					} else {
+						var noSuggestionsForSearch = $("<li></li>").text("No results for: '" + str + "'");
+						$('ul.search-result').append(noSuggestionsForSearch);
+					}
+				} else {
+					alert("Smth went wrong. Status: " + status);
+				}
 			});
 		}
 		
