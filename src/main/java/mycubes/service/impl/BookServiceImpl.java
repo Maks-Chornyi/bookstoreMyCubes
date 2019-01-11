@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mycubes.domain.Author;
 import mycubes.domain.Book;
 import mycubes.repository.BookRepository;
 import mycubes.service.BookService;

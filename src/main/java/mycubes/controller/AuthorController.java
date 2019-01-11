@@ -2,7 +2,6 @@ package mycubes.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -32,7 +31,17 @@ public class AuthorController {
 	
 	@GetMapping("/author")
 	public String getAllAuthors(Model model) {
-		model.addAttribute("authors", authorService.getAllAuthors());
+		List<Author> allAuthors = authorService.getAllAuthors();
+		model.addAttribute("authors", allAuthors);
+		model.addAttribute("countOfAllAuthors", allAuthors.size());
+		model.addAttribute("oldestAuthor", authorService.getOldestAuthor());
+		model.addAttribute("youngestAuthor", authorService.getYoungestAuthor());
+		model.addAttribute("mostSuccessfulAuthor", authorService.getMostPublishedAuthor());
+		model.addAttribute("countOfBooksOfMostSuccessfulAuthor", authorService.getCountOfBooksOfMostSuccessfulAuthor());
+		model.addAttribute("lowestPublishedAuthor", authorService.getLowestPublishedAuthor());
+		model.addAttribute("countOfBooksOfUnSuccessfulAuthor", authorService.getCountOfBooksOfUnSuccessfulAuthor());
+		model.addAttribute("mostProductiveAuthor", authorService.getMostProductiveAuthor());
+		model.addAttribute("averageSaleOfMostProductiveAuthor", authorService.getAverageSaleCountOfProductiveAuthor());
 		return "author";
 	}
 	

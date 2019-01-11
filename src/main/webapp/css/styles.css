@@ -1,6 +1,8 @@
 
 body {
   font-size: 1.5em;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 a:link {
@@ -136,7 +138,7 @@ tr:nth-child(even) {
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
-  width:195px;
+  width: 300px;
   height: 16px;
   padding: 5px;
   background-color: white;
@@ -156,4 +158,21 @@ tr:nth-child(even) {
 ul.search-result {
   margin-top: 0;
   padding-left: 0;
+}
+
+.general-info {
+	backgoroud-color:#4CAF50;
+	margin: 50px;
+	padding: 20px;
+	border: 1px solid black;
+	
+}
+.general-info p {
+	font-size: 0.8em;
+	color: black;
+	margin: 5px;
+}
+
+p a {
+	margin-left: 50px;
 }

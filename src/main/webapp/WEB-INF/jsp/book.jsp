@@ -17,7 +17,6 @@
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
- 	<br>
 <!--  	<form id="newBookForm" method="post" action="/addbook">
 		<input type="text" name="bookId" placeholder="Insert ISBN of book" />
 		<input type="text" name="title" placeholder="book title" />
@@ -25,7 +24,7 @@
 		<input type="text" name="countOfCopies" placeholder="count of copies" />
 		<button type="submit">Add book</button>
 	</form> -->
-	<br>  
+	
 	<form id="formTestPostAjax">
 		<input type="text" name="bookId" placeholder="Insert ISBN of book" />
 		<input type="text" name="title" placeholder="book title" />

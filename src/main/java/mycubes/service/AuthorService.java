@@ -12,4 +12,32 @@ public interface AuthorService {
 	void deleteAuthorById(int id);
 	
 	Author getAuthorById(int id);
+	
+	Author getOldestAuthor();
+	
+	Author getYoungestAuthor();
+	
+	int getCountOfBooksOfMostSuccessfulAuthor();
+	
+	void setCountOfBooksOfMostSuccessfulAuthor(int count);
+	
+	int getCountOfBooksOfUnSuccessfulAuthor();
+	
+	void setCountOfBooksOfUnSuccessfulAuthor(int countOfBooksOfUnSuccessfulAuthor);
+	
+	Author getMostPublishedAuthor();
+	
+	void setMostPublishedAuthor(Author mostPublishedAuthor);
+	
+	Author getLowestPublishedAuthor();
+	
+	void setLowestPublishedAuthor(Author lowestPublishedAuthor);
+	
+	Author getMostProductiveAuthor();
+	
+	void setMostProductiveAuthor(Author mostProductiveAuthor);
+	
+	int getAverageSaleCountOfProductiveAuthor();
+	
+	void setAverageSaleCountOfProductiveAuthor(int averageSaleCountOfProductiveAuthor);
 }

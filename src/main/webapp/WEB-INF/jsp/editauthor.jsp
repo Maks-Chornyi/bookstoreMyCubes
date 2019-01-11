@@ -17,8 +17,10 @@
 
 	<p><a href="/">Back to welcome page</a></p>
 	<br>
-	<h1>Edit author page</h1>
-	<br>
+	<h2>Edit author page</h2>
+	<div class="general-info">
+		<p>first p in this div</p>
+	</div>
 	<form method="post" action="/author/${author.id}/edit" class="editForm">
 		<div>
 			Name<input type="text" name="name" value="${author.name}">
@@ -40,6 +42,8 @@
 		<input type="submit" value="Save Changes">
 	</form>
 		<button><a href="/author">Cancel</a></button>
+		
+		<div></div>
 </body>
 
 </html>

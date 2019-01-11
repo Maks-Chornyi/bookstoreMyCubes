@@ -11,7 +11,14 @@
 </head>
 <body>
 	<p><a href="/">Back to welcome page</a></p>
-	<br>
+	<div class="general-info">
+		<p>Amount of all authors: <strong>${countOfAllAuthors}</strong></p>
+		<p>Oldest author is: <strong>${oldestAuthor.name}</strong></p>
+		<p>Youngest author is: <strong>${youngestAuthor.name}</strong></p>
+		<p>Most successful authors is: <strong>${mostSuccessfulAuthor.name}</strong>, author has <strong>${countOfBooksOfMostSuccessfulAuthor}</strong> published books</p>
+		<p>The author who published lowest count of books is: <strong>${lowestPublishedAuthor.name}</strong>. Author has <strong>${countOfBooksOfUnSuccessfulAuthor}</strong> published books</p>
+		<p>best rates author: <strong>${mostProductiveAuthor.name}</strong>. Author sale <strong>${averageSaleOfMostProductiveAuthor}</strong> books in average</p>
+	</div>
 	<form method="post" action="/addAuthor">
 		<input type="text" name=name placeholder="Name" />
 		<input type="text" name="birthday" placeholder="Birthday" />
