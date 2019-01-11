@@ -1,7 +1,10 @@
 package mycubes.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +23,41 @@ public class AuthorServiceImpl implements AuthorService {
 	private int countOfBooksOfMostSuccessfulAuthor;
 	private int countOfBooksOfUnSuccessfulAuthor = 2000000000;
 	private int averageSaleCountOfProductiveAuthor;
+	private Author youngestAuthor;
+	private Author oldestAuthor;
 	private Author mostPublishedAuthor;
 	private Author lowestPublishedAuthor;
 	private Author mostProductiveAuthor;
+	private List<Author> allAuthors;
+	private Map<String, Object> model;
 	
-	public void getMostSuccessfulAuthor() {
+	public void getAllAuthorsFromDB() {
+		this.allAuthors = (ArrayList<Author>)authorRepo.findAll();
+	}
+	
+	public int getCountOfAllAuthors() {
+		return this.allAuthors.size();
+	}
+	
+	public void sortAuthorsByBirthday(List<Author> authors) {
+		Collections.sort(authors, new Comparator<Author>() {
+			public int compare(Author o1, Author o2) {
+				if(o1 == null || o2 == null) {
+					return 0;
+				}
+				return o2.getBirthday().compareTo(o1.getBirthday());
+			}
+		});
+	}
+	
+	void findOldestAndYoungestAuthors(List<Author> authors) {
+		sortAuthorsByBirthday(authors);
+		this.oldestAuthor = authors.get(authors.size()-1);
+		this.youngestAuthor = authors.get(0);
+	}
+	
+	public void getMostSuccessfulAuthor(List<Author> authors) {
 		int booksCountOfParticularAuthor = 0;
-		List<Author> authors = (ArrayList<Author>) authorRepo.findAll();
 		for(Author author : authors) {
 			Set<Book> books = author.getAuthorsBooks();
 			for(Book book : books) {
@@ -40,9 +71,8 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 	
-	public void getUnSuccessfulAuthor() {
+	public void getUnSuccessfulAuthor(List<Author> authors) {
 		int booksCountOfParticularAuthor = 0;
-		List<Author> authors = (ArrayList<Author>) authorRepo.findAll();
 		for(Author author : authors) {
 			Set<Book> books = author.getAuthorsBooks();
 			for(Book book : books) {
@@ -56,11 +86,10 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 	
-	public void findMostProductiveAuthor() {
+	public void findMostProductiveAuthor(List<Author> authors) {
 		this.averageSaleCountOfProductiveAuthor = 0;
 		int booksCountOfParticularAuthor = 0;
 		int coefSpecialAuthor = 0;
-		List<Author> authors = (ArrayList<Author>) authorRepo.findAll();
 		for (Author author : authors) {
 			Set<Book> books = author.getAuthorsBooks();
 			if  (books.size() > 0) {
@@ -78,97 +107,85 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 
-	@Override
-	public List<Author> getAllAuthors() {
-		return (ArrayList<Author>) authorRepo.findAll();
-	}
-	
-	@Override
-	public void addAuthor(Author newAuthor) {
-		authorRepo.save(newAuthor);
-	}
-
-	@Override
-	public void deleteAuthorById(int id) {
-		authorRepo.deleteById(id);
-	}
-
-	@Override
-	public Author getAuthorById(int id) {
-		return authorRepo.findById(id).orElseThrow(RuntimeException::new);
-	}
-
-	@Override
-	public Author getOldestAuthor() {
-		return authorRepo.getOldestAuthor();
-	}
-
-	@Override
-	public Author getYoungestAuthor() {
-		return authorRepo.getYoungestAuthor();
-	}
-	
-	@Override
 	public int getCountOfBooksOfMostSuccessfulAuthor() {
-		return this.countOfBooksOfMostSuccessfulAuthor;
+		return countOfBooksOfMostSuccessfulAuthor;
 	}
-	
-	@Override
-	public void setCountOfBooksOfMostSuccessfulAuthor(int count) {
-		this.countOfBooksOfMostSuccessfulAuthor = count;
+
+	public void setCountOfBooksOfMostSuccessfulAuthor(int countOfBooksOfMostSuccessfulAuthor) {
+		this.countOfBooksOfMostSuccessfulAuthor = countOfBooksOfMostSuccessfulAuthor;
 	}
-	
-	@Override
+
 	public int getCountOfBooksOfUnSuccessfulAuthor() {
-		return this.countOfBooksOfUnSuccessfulAuthor;
+		return countOfBooksOfUnSuccessfulAuthor;
 	}
-	
-	@Override
+
 	public void setCountOfBooksOfUnSuccessfulAuthor(int countOfBooksOfUnSuccessfulAuthor) {
 		this.countOfBooksOfUnSuccessfulAuthor = countOfBooksOfUnSuccessfulAuthor;
 	}
-	
-	@Override
-	public Author getMostPublishedAuthor() {
-		getMostSuccessfulAuthor();
-		return this.mostPublishedAuthor;
+
+	public int getAverageSaleCountOfProductiveAuthor() {
+		return averageSaleCountOfProductiveAuthor;
 	}
-	
-	@Override
+
+	public void setAverageSaleCountOfProductiveAuthor(int averageSaleCountOfProductiveAuthor) {
+		this.averageSaleCountOfProductiveAuthor = averageSaleCountOfProductiveAuthor;
+	}
+
+	public Author getYoungestAuthor() {
+		return youngestAuthor;
+	}
+
+	public void setYoungestAuthor(Author youngestAuthor) {
+		this.youngestAuthor = youngestAuthor;
+	}
+
+	public Author getOldestAuthor() {
+		return oldestAuthor;
+	}
+
+	public void setOldestAuthor(Author oldestAuthor) {
+		this.oldestAuthor = oldestAuthor;
+	}
+
+	public Author getMostPublishedAuthor() {
+		return mostPublishedAuthor;
+	}
+
 	public void setMostPublishedAuthor(Author mostPublishedAuthor) {
 		this.mostPublishedAuthor = mostPublishedAuthor;
 	}
-	
-	@Override
+
 	public Author getLowestPublishedAuthor() {
-		getUnSuccessfulAuthor();
-		return this.lowestPublishedAuthor;
+		return lowestPublishedAuthor;
 	}
 
-	@Override
 	public void setLowestPublishedAuthor(Author lowestPublishedAuthor) {
 		this.lowestPublishedAuthor = lowestPublishedAuthor;
 	}
 
-	@Override
-	public int getAverageSaleCountOfProductiveAuthor() {
-		findMostProductiveAuthor();
-		return averageSaleCountOfProductiveAuthor;
-	}
-
-	@Override
-	public void setAverageSaleCountOfProductiveAuthor(int averageSaleCountOfProductiveAuthor) {
-		this.averageSaleCountOfProductiveAuthor = averageSaleCountOfProductiveAuthor;
-	}
-	
-	@Override
 	public Author getMostProductiveAuthor() {
-		findMostProductiveAuthor();
 		return mostProductiveAuthor;
 	}
-	
-	@Override
+
 	public void setMostProductiveAuthor(Author mostProductiveAuthor) {
 		this.mostProductiveAuthor = mostProductiveAuthor;
 	}
+
+	public List<Author> getAllAuthors() {
+		return allAuthors;
+	}
+
+	public void setAllAuthors(List<Author> allAuthors) {
+		this.allAuthors = allAuthors;
+	}
+	
+	@Override
+	public Map<String, Object> getModel() {
+		return model;
+	}
+
+	public void setModel(Map<String, Object> model) {
+		this.model = model;
+	}
+	
 }

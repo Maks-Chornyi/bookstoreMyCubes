@@ -19,7 +19,7 @@
 	<br>
 	<h2>Edit author page</h2>
 	<div class="general-info">
-		<p>first p in this div</p>
+		<p>${author.name} has written ${countOfAuthorsBooks} book<c:if test="${countOfAuthorsBooks > 1}">s</c:if></p>
 	</div>
 	<form method="post" action="/author/${author.id}/edit" class="editForm">
 		<div>

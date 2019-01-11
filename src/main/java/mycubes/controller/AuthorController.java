@@ -2,6 +2,7 @@ package mycubes.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -55,12 +56,14 @@ public class AuthorController {
 	public String editAuthorById(@PathVariable(value="id") int id, Model model) {
 		Author author = authorService.getAuthorById(id);
 		List<Integer> authorsBooksIds = new ArrayList<>();
-		for (Book book : author.getAuthorsBooks()) {
+		Set<Book> authorsBooks = author.getAuthorsBooks();
+		for (Book book : authorsBooks) {
 			authorsBooksIds.add(book.getId());
 		}
 		model.addAttribute("author", author);
 		model.addAttribute("books", bookService.getAllBooks());
 		model.addAttribute("authorsBooksIds", authorsBooksIds);
+		model.addAttribute("countOfAuthorsBooks", authorsBooks.size());
 		return "editauthor";
 	}
 	
