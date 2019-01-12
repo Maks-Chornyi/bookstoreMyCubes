@@ -3,6 +3,7 @@ package mycubes.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,10 +34,6 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	public void getAllAuthorsFromDB() {
 		this.allAuthors = (ArrayList<Author>)authorRepo.findAll();
-	}
-	
-	public int getCountOfAllAuthors() {
-		return this.allAuthors.size();
 	}
 	
 	public void sortAuthorsByBirthday(List<Author> authors) {
@@ -107,6 +104,30 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 
+	private void getAllValuesWeNeed() {
+		getAllAuthorsFromDB();
+		sortAuthorsByBirthday(this.allAuthors);
+		findOldestAndYoungestAuthors(this.allAuthors);
+		getMostSuccessfulAuthor(this.allAuthors);
+		getUnSuccessfulAuthor(this.allAuthors);
+		findMostProductiveAuthor(this.allAuthors);
+	}
+	
+	private void setAllValuesIntoModel() {
+		getAllValuesWeNeed();
+		this.model = new HashMap<>();
+		this.model.put("countOfAllAuthors", this.allAuthors.size());
+		this.model.put("oldestAuthor", getOldestAuthor());
+		this.model.put("youngestAuthor", getYoungestAuthor());
+		this.model.put("mostSuccessfulAuthor",getMostPublishedAuthor());
+		this.model.put("countOfBooksOfMostSuccessfulAuthor", getCountOfBooksOfMostSuccessfulAuthor());
+		this.model.put("lowestPublishedAuthor", getLowestPublishedAuthor());
+		this.model.put("countOfBooksOfUnSuccessfulAuthor", getCountOfBooksOfUnSuccessfulAuthor());
+		this.model.put("mostProductiveAuthor", getMostProductiveAuthor());
+		this.model.put("averageSaleOfMostProductiveAuthor", getAverageSaleCountOfProductiveAuthor());
+		this.model.put("authors",this.allAuthors);
+	}
+	
 	public int getCountOfBooksOfMostSuccessfulAuthor() {
 		return countOfBooksOfMostSuccessfulAuthor;
 	}
@@ -181,11 +202,27 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	@Override
 	public Map<String, Object> getModel() {
+		setAllValuesIntoModel();
 		return model;
 	}
 
 	public void setModel(Map<String, Object> model) {
 		this.model = model;
 	}
-	
+
+	@Override
+	public void deleteAuthorById(int id) {
+		authorRepo.deleteById(id);
+	}
+
+	@Override
+	public Author getAuthorById(int id) {
+		return authorRepo.findById(id).orElseThrow(RuntimeException::new);
+		
+	}
+
+	@Override
+	public void addAuthor(Author author) {
+		authorRepo.save(author);
+	}
 }

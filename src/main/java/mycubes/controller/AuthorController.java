@@ -32,17 +32,7 @@ public class AuthorController {
 	
 	@GetMapping("/author")
 	public String getAllAuthors(Model model) {
-		List<Author> allAuthors = authorService.getAllAuthors();
-		model.addAttribute("authors", allAuthors);
-		model.addAttribute("countOfAllAuthors", allAuthors.size());
-		model.addAttribute("oldestAuthor", authorService.getOldestAuthor());
-		model.addAttribute("youngestAuthor", authorService.getYoungestAuthor());
-		model.addAttribute("mostSuccessfulAuthor", authorService.getMostPublishedAuthor());
-		model.addAttribute("countOfBooksOfMostSuccessfulAuthor", authorService.getCountOfBooksOfMostSuccessfulAuthor());
-		model.addAttribute("lowestPublishedAuthor", authorService.getLowestPublishedAuthor());
-		model.addAttribute("countOfBooksOfUnSuccessfulAuthor", authorService.getCountOfBooksOfUnSuccessfulAuthor());
-		model.addAttribute("mostProductiveAuthor", authorService.getMostProductiveAuthor());
-		model.addAttribute("averageSaleOfMostProductiveAuthor", authorService.getAverageSaleCountOfProductiveAuthor());
+		model.addAllAttributes(authorService.getModel());
 		return "author";
 	}
 	
