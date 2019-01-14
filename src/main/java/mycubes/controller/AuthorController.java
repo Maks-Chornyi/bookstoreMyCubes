@@ -32,7 +32,20 @@ public class AuthorController {
 	
 	@GetMapping("/author")
 	public String getAllAuthors(Model model) {
-		model.addAllAttributes(authorService.getModel());
+		List<Author> authors = authorService.findAll();
+		Author mostSuccessfullAuthor = authorService.getMostSuccessfulAuthor2(authors);
+		Author unSuccessfulAuthor = authorService.getUnSuccessfulAuthor2(authors);
+		Author mostProductiveAuthor = authorService.getMostProductiveAuthor(authors);
+		model.addAttribute("countOfAllAuthors", authors.size());
+		model.addAttribute("oldestAuthor", authorService.getOldestAuthor(authors));
+		model.addAttribute("youngestAuthor", authorService.getYoungestAuthor(authors));
+		model.addAttribute("mostSuccessfulAuthor", mostSuccessfullAuthor);
+		model.addAttribute("countOfBooksOfMostSuccessfulAuthor", authorService.getCountOfBooksOfAuthor(mostSuccessfullAuthor));
+		model.addAttribute("lowestPublishedAuthor", unSuccessfulAuthor);
+		model.addAttribute("countOfBooksOfUnSuccessfulAuthor", authorService.getCountOfBooksOfAuthor(unSuccessfulAuthor));
+		model.addAttribute("mostProductiveAuthor", mostProductiveAuthor);
+		model.addAttribute("averageSaleOfMostProductiveAuthor", authorService.getAverageSaleCountOfAuthor(mostProductiveAuthor));
+		model.addAttribute("authors", authorService.findAll());
 		return "author";
 	}
 	
@@ -60,14 +73,14 @@ public class AuthorController {
 	@RequestMapping(value="/author/{id}/edit", method = RequestMethod.POST)
 	public String addAuthor(@Valid Author newAuthor, Model model) {
 		authorService.addAuthor(newAuthor);
-		model.addAttribute("authors", authorService.getAllAuthors());
+		model.addAttribute("authors", authorService.findAll());
 		return "redirect:/author";
 	}
 	
 	@PostMapping("/addAuthor")
 	public String addNewAuthor(@Valid Author newAuthor, Model model) {
 		authorService.addAuthor(newAuthor);
-		model.addAttribute("authors", authorService.getAllAuthors());
+		model.addAttribute("authors", authorService.findAll());
 		return "redirect:/author";
 	}
 }
