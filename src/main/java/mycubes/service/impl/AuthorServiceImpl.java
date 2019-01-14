@@ -72,8 +72,9 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public Author getUnSuccessfulAuthor2(List<Author> authors) {
 		int booksCountOfParticularAuthor = 0;
-		int booksCountOfUnSuccessfulAuthor = 2000000000;
 		Author unsuccessfulAuthor = authors.get(0);
+		int booksCountOfUnSuccessfulAuthor = unsuccessfulAuthor.getAuthorsBooks().size();
+		
 				
 		for(Author author : authors) {
 			booksCountOfParticularAuthor = getCountOfBooksOfAuthor(author);

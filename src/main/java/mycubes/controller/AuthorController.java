@@ -45,7 +45,7 @@ public class AuthorController {
 		model.addAttribute("countOfBooksOfUnSuccessfulAuthor", authorService.getCountOfBooksOfAuthor(unSuccessfulAuthor));
 		model.addAttribute("mostProductiveAuthor", mostProductiveAuthor);
 		model.addAttribute("averageSaleOfMostProductiveAuthor", authorService.getAverageSaleCountOfAuthor(mostProductiveAuthor));
-		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("authors", authors);
 		return "author";
 	}
 	
