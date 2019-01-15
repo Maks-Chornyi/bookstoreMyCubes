@@ -55,6 +55,14 @@ public class AuthorController {
 		return "redirect:author";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/author/{id}/edit", method = RequestMethod.GET)
 	public String editAuthorById(@PathVariable(value="id") int id, Model model) {
 		Author author = authorService.getAuthorById(id);
@@ -67,8 +75,21 @@ public class AuthorController {
 		model.addAttribute("books", bookService.getAllBooks());
 		model.addAttribute("authorsBooksIds", authorsBooksIds);
 		model.addAttribute("countOfAuthorsBooks", authorsBooks.size());
+		model.addAttribute("countOfAllBooks", authorService.getCountOfBooksOfAuthor(author));
+		model.addAttribute("mostSuccessfulBook", authorService.getMostSuccessfulBookOfAuthor(author));
+		model.addAttribute("unsuccessfulBook", authorService.getUnsuccessfulBookOfAuthor(author));
+		model.addAttribute("firstAuthorsBook", authorService.getFirstAuthorsBook(author));
+		model.addAttribute("lastAuthorsBook", authorService.getLastAuthorsBook(author));
 		return "editauthor";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/author/{id}/edit", method = RequestMethod.POST)
 	public String addAuthor(@Valid Author newAuthor, Model model) {

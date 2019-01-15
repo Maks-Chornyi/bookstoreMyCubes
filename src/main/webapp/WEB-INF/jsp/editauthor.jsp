@@ -17,9 +17,13 @@
 
 	<p><a href="/">Back to welcome page</a></p>
 	<br>
-	<h2>Edit author page</h2>
+	<h2>Edit ${author.name} page</h2>
 	<div class="general-info">
-		<p>${author.name} has written ${countOfAuthorsBooks} book<c:if test="${countOfAuthorsBooks > 1}">s</c:if></p>
+		<p>${author.name} has written <strong>${countOfAuthorsBooks}</strong> book<c:if test="${countOfAuthorsBooks > 1}">s</c:if> and has <strong>${countOfAllBooks}</strong> copies of these books</p>
+		<p>Most <strong>successful</strong> book is: <strong>${mostSuccessfulBook.title} (${mostSuccessfulBook.countOfCopies} copies)</strong></p>
+		<p><strong>Unsuccessful</strong> book is: <strong>${unsuccessfulBook.title} (${unsuccessfulBook.countOfCopies} copies)</strong></p>
+		<p>The <strong>first</strong> book of ${author.name} is <strong>${firstAuthorsBook.title}</strong></p>
+		<p>The <strong>last</strong> book author has written is <strong>${lastAuthorsBook.title}</strong></p>
 	</div>
 	<form method="post" action="/author/${author.id}/edit" class="editForm">
 		<div>

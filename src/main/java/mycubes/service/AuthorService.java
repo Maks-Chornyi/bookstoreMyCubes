@@ -3,6 +3,7 @@ package mycubes.service;
 import java.util.List;
 
 import mycubes.domain.Author;
+import mycubes.domain.Book;
 
 public interface AuthorService {
 	List<Author> findAll();
@@ -26,4 +27,14 @@ public interface AuthorService {
 	int getAverageSaleCountOfAuthor(Author author);
 	
 	int getCountOfBooksOfAuthor(Author author);
+	
+	int getCountOfAllBooksOfAuthor(Author author);
+	
+	Book getMostSuccessfulBookOfAuthor(Author author);
+	
+	Book getUnsuccessfulBookOfAuthor(Author author);
+	
+	Book getFirstAuthorsBook(Author author);
+	
+	Book getLastAuthorsBook(Author author);
 }

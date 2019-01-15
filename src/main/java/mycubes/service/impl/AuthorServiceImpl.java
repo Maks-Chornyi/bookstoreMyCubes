@@ -142,4 +142,46 @@ public class AuthorServiceImpl implements AuthorService {
 	public void addAuthor(Author author) {
 		authorRepo.save(author);
 	}
+	
+	@Override
+	public int getCountOfAllBooksOfAuthor(Author author) {
+		Set<Book> books = author.getAuthorsBooks();
+		int countOfAllBooks = 0;
+		for (Book book : books) {
+			countOfAllBooks += book.getCountOfCopies();
+		}
+		return countOfAllBooks;
+	}
+	
+	@Override
+	public Book getMostSuccessfulBookOfAuthor(Author author) {
+		return author.getAuthorsBooks()
+				.stream()
+				.max(Comparator.comparing(Book::getCountOfCopies))
+				.orElseThrow(RuntimeException::new);
+	}
+	
+	@Override
+	public Book getUnsuccessfulBookOfAuthor(Author author) {
+		return author.getAuthorsBooks()
+				.stream()
+				.min(Comparator.comparing(Book::getCountOfCopies))
+				.orElseThrow(RuntimeException::new);
+	}
+	
+	@Override
+	public Book getFirstAuthorsBook(Author author) {
+		return author.getAuthorsBooks()
+				.stream()
+				.min(Comparator.comparing(Book::getPublishDate))
+				.orElseThrow(RuntimeException::new);
+	}
+	
+	@Override
+	public Book getLastAuthorsBook(Author author) {
+		return author.getAuthorsBooks()
+				.stream()
+				.max(Comparator.comparing(Book::getPublishDate))
+				.orElseThrow(RuntimeException::new);
+	}
 }
